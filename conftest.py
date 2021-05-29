@@ -1,6 +1,7 @@
 import pytest
 from selenium import webdriver
-import chromedriver_binary
+from webdriver_manager.chrome import ChromeDriverManager
+
 
 @pytest.fixture
 def driver():
@@ -11,9 +12,8 @@ def driver():
     # disable the infobar at the top of the browser
     options.add_argument('--disable-infobars')
     # # disable certain warning messages when chrome launches
-    # options.add_experimental_option('useAutomationExtension', False)
-    options.add_experimental_option("excludeSwitches", ['enable-automation']);
-    driver = webdriver.Chrome(options=options)
+    options.add_experimental_option("excludeSwitches", ['enable-automation'])
+    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
     driver.implicitly_wait(5)
     yield driver
     # code after yield is run After Each test
