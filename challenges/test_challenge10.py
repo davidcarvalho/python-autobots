@@ -9,7 +9,9 @@ import pytest
 def get_test_data():
     test_data = []
 
-    with open(f'{os.getcwd()}/data/tc10_test_data.csv') as csvfile:
+    filepath = os.path.join(f'{os.getcwd()}', 'challenges', 'data', 'tc10_test_data.csv')
+
+    with open(filepath) as csvfile:
         read_csv = csv.reader(csvfile)
         print(type(read_csv))
         # skip header

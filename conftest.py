@@ -1,3 +1,5 @@
+import os
+
 import pytest
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
@@ -15,6 +17,7 @@ def driver():
     options.add_experimental_option("excludeSwitches", ['enable-automation'])
     driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
     driver.implicitly_wait(5)
+    os.environ['WDM_LOG_LEVEL'] = '0'
     yield driver
     # code after yield is run After Each test
     driver.quit()
