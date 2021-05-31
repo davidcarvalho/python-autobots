@@ -3,7 +3,11 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'python --version'
+                sh """
+                . .env/bin/activate
+                pip install -r requirements.txt
+                python -m pytest
+                """
             }
         }
     }
