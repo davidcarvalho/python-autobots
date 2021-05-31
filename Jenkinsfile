@@ -4,7 +4,7 @@ pipeline {
         stage('build') {
             steps {
                 sh """
-                source "/bin/activate"
+                ./bin/activate
                 pip install -r requirements.txt
                 python -m pytest
                 """
