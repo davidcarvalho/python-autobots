@@ -4,7 +4,9 @@ pipeline {
         stage('build') {
             steps {
                 sh """
-                . .env/bin/activate
+                VENV=".venv-$BUILD_NUMBER"
+                virtualenv "$VENV"
+                PS1="${PS1:-}" source "$VENV/bin/activate"
                 pip install -r requirements.txt
                 python -m pytest
                 """
