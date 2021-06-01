@@ -2,14 +2,13 @@ pipeline {
     agent any
     stages {
         stage('build') {
-          steps {
-            bat 'pip install -r requirements.txt'
-          }
+            steps {
+                bat 'pip install -r requirements.txt'
+            }
         }
         stage('test') {
-              steps {
+            steps {
                 bat 'python -m pytest'
-              }
             }
         }
     }
